@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Raito Sushi Wok</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b0b0b;
+    color: white;
+}
+
+/* ENCABEZADO */
+
+header {
+    min-height: 55vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 40px 20px;
+
+    background:
+    linear-gradient(#0008, #000c),
+    url("https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1800&q=80");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.logo {
+    font-size: clamp(40px, 8vw, 75px);
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.logo span {
+    color: #d71920;
+}
+
+header p {
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+/* MENU DE NAVEGACIÓN */
+
+nav {
+    position: sticky;
+    top: 0;
+
+    background: #151515ee;
+
+    padding: 15px;
+
+    text-align: center;
+
+    z-index: 10;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+
+    margin: 0 12px;
+
+    font-weight: bold;
+}
+
+/* CONTENEDOR */
+
+.container {
+    max-width: 1150px;
+    margin: auto;
+
+    padding: 50px 18px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 30px;
+}
+
+.intro {
+    text-align: center;
+    color: #aaa;
+
+    margin-bottom: 30px;
+}
+
+/* CATEGORÍAS */
+
+.categorias {
+    display: flex;
+    gap: 10px;
+
+    overflow-x: auto;
+
+    padding-bottom: 20px;
+}
+
+.categorias button {
+    white-space: nowrap;
+
+    background: #252525;
+
+    color: white;
+
+    border: none;
+
+    padding: 11px 16px;
+
+    border-radius: 25px;
+
+    cursor: pointer;
+}
+
+.categorias button.activo {
+    background: #d71920;
+}
+
+/* PRODUCTOS */
+
+.productos {
+    display: grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 20px;
+}
+
+.producto {
+    background: #171717;
+
+    border: 1px solid #292929;
+
+    border-radius: 16px;
+
+    padding: 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-height: 240px;
+}
+
+.categoria {
+    color: #e66;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+
+    margin-bottom: 10px;
+}
+
+.producto h3 {
+    font-size: 20px;
+
+    margin-bottom: 10px;
+}
+
+.producto p {
+    color: #aaa;
+
+    line-height: 1.5;
+
+    flex: 1;
+}
+
+.precio {
+    font-size: 21px;
+
+    font-weight: bold;
+
+    margin: 15px 0;
+}
+
+.agregar {
+    background: #d71920;
+
+    color: white;
+
+    border: none;
+
+    padding: 12px;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+/* CARRITO */
+
+.carrito {
+    margin-top: 50px;
+
+    background: #151515;
+
+    border: 1px solid #333;
+
+    border-radius: 20px;
+
+    padding: 25px;
+}
+
+.item {
+    display: grid;
+
+    grid-template-columns:
+    1fr auto auto;
+
+    gap: 15px;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #292929;
+}
+
+.cantidad {
+    display: flex;
+
+    gap: 8px;
+
+    align-items: center;
+}
+
+.cantidad button {
+    width: 30px;
+
+    height: 30px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #292929;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 18px;
+}
+
+.eliminar {
+    background: none;
+
+    border: none;
+
+    color: #e66;
+
+    cursor: pointer;
+}
+
+.resumen {
+    padding-top: 20px;
+
+    text-align: right;
+
+    line-height: 2;
+}
+
+.total {
+    font-size: 25px;
+
+    font-weight: bold;
+}
+
+/* FORMULARIO */
+
+.formulario {
+    display: grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+.formulario h3 {
+    grid-column: 1 / -1;
+}
+
+.formulario input,
+.formulario textarea,
+.formulario select {
+
+    padding: 13px;
+
+    background: #0d0d0d;
+
+    color: white;
+
+    border: 1px solid #444;
+
+    border-radius: 9px;
+}
+
+.formulario textarea {
+
+    min-height: 90px;
+
+    resize: vertical;
+}
+
+.completo {
+    grid-column: 1 / -1;
+}
+
+/* WHATSAPP */
+
+.whatsapp {
+
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 16px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #20a34a;
+
+    color: white;
+
+    font-weight: bold;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+.vacio {
+
+    text-align: center;
+
+    color: #999;
+
+    padding: 25px;
+}
+
+/* PIE */
+
+footer {
+
+    text-align: center;
+
+    padding: 30px;
+
+    color: #888;
+
+    background: #050505;
+}
+
+/* CELULAR */
+
+@media(max-width:650px) {
+
+    .formulario {
+        grid-template-columns: 1fr;
+    }
+
+    .completo {
+        grid-column: auto;
+    }
+
+    .item {
+        grid-template-columns:
+        1fr auto;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- ENCABEZADO -->
+
+<header>
+
+<div>
+
+<div class="logo">
+
+RAITO <span>SUSHI WOK</span>
+
+</div>
+
+<p>
+🍣 Tradición japonesa y alma colombiana
+</p>
+
+</div>
+
+</header>
+
+
+<!-- NAVEGACIÓN -->
+
+<nav>
+
+<a href="#menu">
+Carta
+</a>
+
+<a href="#pedido">
+🛒 Carrito
+(<span id="contador">0</span>)
+</a>
+
+</nav>
+
+
+<main class="container" id="menu">
+
+<h2>
+🍣 Carta oficial
+</h2>
+
+<p class="intro">
+
+Sushi como se sirve en Japón (y algo más),
+con respeto y técnica.
+
+</p>
+
+
+<!-- CATEGORÍAS -->
+
+<div class="categorias">
+
+<button class="activo"
+onclick="filtrar('Todos', this)">
+Todos
+</button>
+
+<button
+onclick="filtrar('Entradas', this)">
+Entradas
+</button>
+
+<button
+onclick="filtrar('Sushi', this)">
+Sushi
+</button>
+
+<button
+onclick="filtrar('Makis', this)">
+Sazón Local
+</button>
+
+<button
+onclick="filtrar('Nigiris', this)">
+Nigiris
+</button>
+
+<button
+onclick="filtrar('Combos', this)">
+Combos
+</button>
+
+</div>
+
+
+<!-- PRODUCTOS -->
+
+<div
+class="productos"
+id="productos">
+</div>
+
+
+<!-- CARRITO -->
+
+<section
+class="carrito"
+id="pedido">
+
+<h2>
+🛒 Tu pedido
+</h2>
+
+<div id="carrito">
+
+<div class="vacio">
+
+Tu carrito está vacío 🍣
+
+</div>
+
+</div>
+
+
+<div class="resumen">
+
+Subtotal:
+
+<b>
+$<span id="subtotal">0</span>
+</b>
+
+<br>
+
+Delivery:
+
+<b>
+Por confirmar
+</b>
+
+<br>
+
+<span class="total">
+
+Total:
+
+$<span id="total">0</span>
+
+</span>
+
+</div>
+
+
+<!-- DATOS DEL CLIENTE -->
+
+<div class="formulario">
+
+<h3>
+📍 Datos de entrega
+</h3>
+
+
+<input
+id="nombre"
+placeholder="Nombre completo *">
+
+
+<input
+id="telefono"
+placeholder="Teléfono *">
+
+
+<input
+class="completo"
+id="direccion"
+placeholder="Dirección *">
+
+
+<input
+id="barrio"
+placeholder="Barrio">
+
+
+<select id="pago">
+
+<option>
+Pago en efectivo
+</option>
+
+<option>
+Transferencia
+</option>
+
+<option>
+Contraentrega
+</option>
+
+</select>
+
+
+<textarea
+class="completo"
+id="nota"
+placeholder="Notas del pedido (opcional)">
+</textarea>
+
+</div>
+
+
+<button
+class="whatsapp"
+onclick="enviarWhatsApp()">
+
+📲 Confirmar pedido por WhatsApp
+
+</button>
+
+</section>
+
+</main>
+
+
+<footer>
+
+© 2026 Raito Sushi Wok
+
+</footer>
+
+
+<script>
+
+
+/* =========================
+PRODUCTOS DE RAITO
+========================= */
+
+const productos = [
+
+
+{
+id:1,
+categoria:"Entradas",
+nombre:"Gyozas de cerdo y res",
+descripcion:"Empanadillas japonesas doradas, rellenas de cerdo y res con vegetales.",
+precio:18900
+},
+
+
+{
+id:2,
+categoria:"Entradas",
+nombre:"Ensalada Wakame",
+descripcion:"Alga wakame aliñada con vinagre de arroz y sésamo con adición de palmito y mango.",
+precio:18500
+},
+
+
+{
+id:3,
+categoria:"Entradas",
+nombre:"Yakitori de pollo",
+descripcion:"Brochetas a la parrilla en salsa teriyaki tradicional. 2 brochetas.",
+precio:18500
+},
+
+
+{
+id:4,
+categoria:"Entradas",
+nombre:"Thai Spring Roll",
+descripcion:"Rolls con vegetales frescos salteados con pollo, servido con salsa agridulce.",
+precio:18000
+},
+
+
+{
+id:5,
+categoria:"Entradas",
+nombre:"Tartare Tres Mares RAITO",
+descripcion:"Salmón, atún y pescado blanco marinados con cítricos y aceite de sésamo sobre crocante canasta de patacón.",
+precio:32900
+},
+
+
+{
+id:6,
+categoria:"Sushi",
+nombre:"Tekka Maki",
+descripcion:"Atún fresco y arroz envuelto en nori. 10 bocados.",
+precio:35900
+},
+
+
+{
+id:7,
+categoria:"Sushi",
+nombre:"Maki Ebi Tempura",
+descripcion:"Langostino tempurizado, aguacate y mayonesa japonesa. 10 bocados.",
+precio:31900
+},
+
+
+{
+id:8,
+categoria:"Sushi",
+nombre:"Maki Philadelphia",
+descripcion:"Salmón, aguacate y queso crema. 10 bocados.",
+precio:25900
+},
+
+
+{
+id:9,
+categoria:"Sushi",
+nombre:"Maki Spicy Tuna",
+descripcion:"Atún picante, cebollín y spicy mayo. 10 bocados.",
+precio:28900
+},
+
+
+{
+id:10,
+categoria:"Sushi",
+nombre:"Maki Unagi",
+descripcion:"Anguila glaseada y arroz. 10 bocados.",
+precio:35900
+},
+
+
+{
+id:11,
+categoria:"Sushi",
+nombre:"Maki Ebi Mango",
+descripcion:"Langostino, queso crema, aguacate, mango fresco y salsa de maracuyá. 10 bocados.",
+precio:30900
+},
+
+
+{
+id:12,
+categoria:"Sushi",
+nombre:"Maki Sake",
+descripcion:"Salmón fresco y alga nori. 10 bocados.",
+precio:21900
+},
+
+
+{
+id:13,
+categoria:"Sushi",
+nombre:"Maki Rainbow",
+descripcion:"California roll con topping de salmón, atún y aguacate. 10 bocados.",
+precio:35900
+},
+
+
+{
+id:14,
+categoria:"Sushi",
+nombre:"Maki Dynamite",
+descripcion:"Atún spicy, cebolla frita y sriracha. 10 bocados.",
+precio:32900
+},
+
+
+{
+id:15,
+categoria:"Sushi",
+nombre:"Raito Tempura",
+descripcion:"Pescado blanco con queso crema y ajonjolí. 10 bocados.",
+precio:31900
+},
+
+
+{
+id:16,
+categoria:"Sushi",
+nombre:"Maki Kappa (Vegetariano)",
+descripcion:"Pepino japonés, arroz sazonado y alga nori. 10 bocados.",
+precio:27900
+},
+
+
+{
+id:17,
+categoria:"Makis",
+nombre:"Maki Bahía Spicy",
+descripcion:"Pollo crispy, queso crema, lechuga, aguacate y palmito en salsa spicy. 10 bocados.",
+precio:29900
+},
+
+
+{
+id:18,
+categoria:"Makis",
+nombre:"Maki Caribe RAITO",
+descripcion:"Carne y pollo desmechados, aguacate, maduro y dip de palmito dinamita. 10 bocados.",
+precio:31900
+},
+
+
+{
+id:19,
+categoria:"Makis",
+nombre:"Costeño Raito",
+descripcion:"Langostino tempura, tajadas de maduro, suero costeño y masago. 10 bocados.",
+precio:32900
+},
+
+
+{
+id:20,
+categoria:"Makis",
+nombre:"Maki Yuzu Ceviche",
+descripcion:"Pescado blanco marinado en cítricos sobre arroz sazonado y alga nori. 10 bocados.",
+precio:32900
+},
+
+
+{
+id:21,
+categoria:"Nigiris",
+nombre:"Nigiri de Salmón (Sake)",
+descripcion:"Corte fresco sobre arroz templado. 2 unidades.",
+precio:18000
+},
+
+
+{
+id:22,
+categoria:"Nigiris",
+nombre:"Nigiri de Atún (Maguro)",
+descripcion:"Textura firme y sabor profundo. 2 unidades.",
+precio:18000
+},
+
+
+{
+id:23,
+categoria:"Nigiris",
+nombre:"Nigiri de Pescado Blanco",
+descripcion:"Delicado, suave y elegante. 2 unidades.",
+precio:18000
+},
+
+
+{
+id:24,
+categoria:"Nigiris",
+nombre:"Nigiri de anguila cocinada (Unagi)",
+descripcion:"Textura firme y sabor profundo. 2 unidades.",
+precio:18000
+},
+
+
+{
+id:25,
+categoria:"Combos",
+nombre:"COMBO — TROPICAL NIKKEI",
+descripcion:"Maki Ebi Mango + Maki Yuzu Ceviche + Coca-Cola clásica botella 400ml.",
+precio:61900
+},
+
+
+{
+id:26,
+categoria:"Combos",
+nombre:"COMBO — ESCUELA JAPONESA",
+descripcion:"Tekka Maki + Maki Sake + Maki Kappa + 2 bebidas Té Hatsu de té verde con jazmín.",
+precio:78000
+},
+
+
+{
+id:27,
+categoria:"Combos",
+nombre:"COMBO — ROLLO EXPLOSIVO RAITO",
+descripcion:"Maki Dynamite + Maki Costeño Raito + Coca-Cola, Té Hatsu o agua embotellada.",
+precio:63900
+},
+
+
+{
+id:28,
+categoria:"Combos",
+nombre:"COMBO RAITO UNIMINUTO",
+descripcion:"Maki Bahía Spicy + Maki Caribe RAITO + 1 Té Hatsu + aderezo de la casa GRATIS.",
+precio:29900
+},
+
+
+{
+id:29,
+categoria:"Combos",
+nombre:"COMBO FAMILIAR RAITO – PARA COMPARTIR",
+descripcion:"Gyozas + Thai Spring Roll + Maki Bahía Spicy + Maki Philadelphia + Maki Caribe Raito + Maki Ebi Tempura + Maki Yuzu Ceviche + 3 bebidas.",
+precio:130900
+
+}
+
+];
+
+
+let carrito = {};
+
+
+/* MOSTRAR DINERO */
+
+function dinero(numero) {
+
+return numero.toLocaleString("es-CO");
+
+}
+
+
+/* MOSTRAR PRODUCTOS */
+
+function mostrarProductos(lista = productos) {
+
+const contenedor =
+document.getElementById("productos");
+
+
+contenedor.innerHTML = "";
+
+
+lista.forEach(producto => {
+
+
+contenedor.innerHTML += `
+
+<article class="producto">
+
+<div class="categoria">
+${producto.categoria}
+</div>
+
+<h3>
+${producto.nombre}
+</h3>
+
+<p>
+${producto.descripcion}
+</p>
+
+<div class="precio">
+
+$${dinero(producto.precio)}
+
+</div>
+
+<button
+class="agregar"
+onclick="agregar(${producto.id})">
+
+Agregar al carrito
+
+</button>
+
+</article>
+
+`;
+
+});
+
+}
+
+
+/* AGREGAR */
+
+function agregar(id) {
+
+if (carrito[id]) {
+
+carrito[id]++;
+
+} else {
+
+carrito[id] = 1;
+
+}
+
+mostrarCarrito();
+
+document
+.getElementById("pedido")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+/* CAMBIAR CANTIDAD */
+
+function cambiarCantidad(id, cantidad) {
+
+carrito[id] += cantidad;
+
+
+if (carrito[id] <= 0) {
+
+delete carrito[id];
+
+}
+
+
+mostrarCarrito();
+
+}
+
+
+/* ELIMINAR */
+
+function eliminar(id) {
+
+delete carrito[id];
+
+mostrarCarrito();
+
+}
+
+
+/* MOSTRAR CARRITO */
+
+function mostrarCarrito() {
+
+
+const contenedor =
+document.getElementById("carrito");
+
+
+const ids =
+Object.keys(carrito);
+
+
+if (ids.length === 0) {
+
+contenedor.innerHTML = `
+
+<div class="vacio">
+
+Tu carrito está vacío 🍣
+
+</div>
+
+`;
+
+} else {
+
+
+contenedor.innerHTML = "";
+
+
+ids.forEach(id => {
+
+
+const producto =
+productos.find(p =>
+p.id == id
+);
+
+
+const cantidad =
+carrito[id];
+
+
+contenedor.innerHTML += `
+
+<div class="item">
+
+<div>
+
+<b>
+${producto.nombre}
+</b>
+
+<br>
+
+$${dinero(producto.precio)}
+
+</div>
+
+
+<div class="cantidad">
+
+<button
+onclick="cambiarCantidad(${producto.id}, -1)">
+−
+</button>
+
+<b>
+${cantidad}
+</b>
+
+<button
+onclick="cambiarCantidad(${producto.id}, 1)">
++
+</button>
+
+</div>
+
+
+<button
+class="eliminar"
+onclick="eliminar(${producto.id})">
+
+Eliminar
+
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+
+/* TOTAL */
+
+let subtotal = 0;
+
+ids.forEach(id => {
+
+const producto =
+productos.find(p =>
+p.id == id
+);
+
+subtotal +=
+producto.precio *
+carrito[id];
+
+});
+
+
+document.getElementById("subtotal")
+.textContent =
+dinero(subtotal);
+
+
+document.getElementById("total")
+.textContent =
+dinero(subtotal);
+
+
+document.getElementById("contador")
+.textContent =
+ids.reduce(
+(total,id) =>
+total + carrito[id],
+0
+);
+
+}
+
+
+/* FILTRAR */
+
+function filtrar(categoria, boton) {
+
+
+document
+.querySelectorAll(".categorias button")
+.forEach(b => {
+
+b.classList.remove("activo");
+
+});
+
+
+boton.classList.add("activo");
+
+
+if (categoria === "Todos") {
+
+mostrarProductos();
+
+} else {
+
+mostrarProductos(
+productos.filter(
+p => p.categoria === categoria
+)
+);
+
+}
+
+}
+
+
+/* WHATSAPP */
+
+function enviarWhatsApp() {
+
+
+const ids =
+Object.keys(carrito);
+
+
+if (ids.length === 0) {
+
+alert("Agrega productos al carrito.");
+
+return;
+
+}
+
+
+const nombre =
+document.getElementById("nombre")
+.value.trim();
+
+
+const telefono =
+document.getElementById("telefono")
+.value.trim();
+
+
+const direccion =
+document.getElementById("direccion")
+.value.trim();
+
+
+if (!nombre ||
+!telefono ||
+!direccion) {
+
+alert(
+"Completa nombre, teléfono y dirección."
+);
+
+return;
+
+}
+
+
+const barrio =
+document.getElementById("barrio")
+.value;
+
+
+const pago =
+document.getElementById("pago")
+.value;
+
+
+const nota =
+document.getElementById("nota")
+.value;
+
+
+let subtotal = 0;
+
+let lista = "";
+
+
+ids.forEach(id => {
+
+
+const producto =
+productos.find(
+p => p.id == id
+);
+
+
+const cantidad =
+carrito[id];
+
+
+subtotal +=
+producto.precio *
+cantidad;
+
+
+lista +=
+`• ${cantidad} x ${producto.nombre} - $${dinero(producto.precio * cantidad)}%0A`;
+
+});
+
+
+/*
+IMPORTANTE:
+CAMBIA ESTE NÚMERO POR EL
+WHATSAPP REAL DE RAITO
+*/
+
+const numero =
+"573000000000";
+
+
+const mensaje =
+
+`Hola, Raito Sushi Wok 🍣%0A%0A` +
+
+`*NUEVO PEDIDO*%0A%0A` +
+
+lista +
+
+`%0A*Subtotal:* $${dinero(subtotal)}%0A` +
+
+`*Delivery:* por confirmar%0A%0A` +
+
+`*Cliente:* ${encodeURIComponent(nombre)}%0A` +
+
+`*Teléfono:* ${encodeURIComponent(telefono)}%0A` +
+
+`*Dirección:* ${encodeURIComponent(direccion)}%0A` +
+
+`*Barrio:* ${encodeURIComponent(barrio)}%0A` +
+
+`*Pago:* ${encodeURIComponent(pago)}%0A` +
+
+`*Nota:* ${encodeURIComponent(nota)}`;
+
+
+window.open(
+`https://wa.me/${numero}?text=${mensaje}`,
+"_blank"
+);
+
+}
+
+
+/* INICIAR */
+
+mostrarProductos();
+
+mostrarCarrito();
+
+</script>
+
+</body>
+</html>
