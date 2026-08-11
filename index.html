@@ -148,7 +148,13 @@ h2 {
 
     gap: 20px;
 }
-
+.foto-plato {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-bottom: 15px;
+}
 .producto {
     background: #171717;
 
@@ -668,7 +674,8 @@ id:4,
 categoria:"Entradas",
 nombre:"Thai Spring Roll",
 descripcion:"Rolls con vegetales frescos salteados con pollo, servido con salsa agridulce.",
-precio:18000
+precio:18000,
+imagen:"thai-spring-roll.png"
 },
 
 
@@ -927,7 +934,7 @@ lista.forEach(producto => {
 contenedor.innerHTML += `
 
 <article class="producto">
-
+${producto.imagen ? '<img class="foto-plato" src="' + producto.imagen + '" alt="' + producto.nombre + '">' : ''}
 <div class="categoria">
 ${producto.categoria}
 </div>
