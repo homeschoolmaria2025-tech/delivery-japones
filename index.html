@@ -148,22 +148,7 @@ h2 {
 
     gap: 20px;
 }
-.foto-plato {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 14px;
-    margin-bottom: 15px;
-    background: #111;
-}
-.foto-plato {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 14px;
-    margin-bottom: 15px;
-    background: #111;
-}
+
 .producto {
     background: #171717;
 
@@ -683,8 +668,7 @@ id:4,
 categoria:"Entradas",
 nombre:"Thai Spring Roll",
 descripcion:"Rolls con vegetales frescos salteados con pollo, servido con salsa agridulce.",
-precio:18000,
-imagen:"thai-spring-roll.png"
+precio:18000
 },
 
 
@@ -748,7 +732,6 @@ categoria:"Sushi",
 nombre:"Maki Ebi Mango",
 descripcion:"Langostino, queso crema, aguacate, mango fresco y salsa de maracuyá. 10 bocados.",
 precio:30900
-imagen:"maki-ebi-mango.png"
 },
 
 
@@ -785,7 +768,6 @@ categoria:"Sushi",
 nombre:"Raito Tempura",
 descripcion:"Pescado blanco con queso crema y ajonjolí. 10 bocados.",
 precio:31900
-imagen:"raito-tempura.png"
 },
 
 
@@ -804,7 +786,6 @@ categoria:"Makis",
 nombre:"Maki Bahía Spicy",
 descripcion:"Pollo crispy, queso crema, lechuga, aguacate y palmito en salsa spicy. 10 bocados.",
 precio:29900
-imagen:"maki-bahia-spicy.png"
 },
 
 
@@ -814,7 +795,6 @@ categoria:"Makis",
 nombre:"Maki Caribe RAITO",
 descripcion:"Carne y pollo desmechados, aguacate, maduro y dip de palmito dinamita. 10 bocados.",
 precio:31900
-imagen:"maki-caribe-raito.png"
 },
 
 
@@ -824,7 +804,6 @@ categoria:"Makis",
 nombre:"Costeño Raito",
 descripcion:"Langostino tempura, tajadas de maduro, suero costeño y masago. 10 bocados.",
 precio:32900
-imagen:"costeno-raito.png"
 },
 
 
@@ -834,7 +813,6 @@ categoria:"Makis",
 nombre:"Maki Yuzu Ceviche",
 descripcion:"Pescado blanco marinado en cítricos sobre arroz sazonado y alga nori. 10 bocados.",
 precio:32900
-imagen:"maki-yuzu-ceviche.png"
 },
 
 
@@ -844,7 +822,6 @@ categoria:"Nigiris",
 nombre:"Nigiri de Salmón (Sake)",
 descripcion:"Corte fresco sobre arroz templado. 2 unidades.",
 precio:18000
-imagen:"nigiri-salmon.png"
 },
 
 
@@ -949,7 +926,8 @@ lista.forEach(producto => {
 
 contenedor.innerHTML += `
 
-${producto.imagen ? '<img class="foto-plato" src="' + producto.imagen + '" alt="' + producto.nombre + '">' : ''}
+<article class="producto">
+
 <div class="categoria">
 ${producto.categoria}
 </div>
