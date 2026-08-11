@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,9 +25,11 @@ body {
 
 header {
     min-height: 55vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     text-align: center;
 
     padding: 40px 20px;
@@ -54,7 +57,7 @@ header p {
     margin-top: 15px;
 }
 
-/* MENU DE NAVEGACIÓN */
+/* NAVEGACIÓN */
 
 nav {
     position: sticky;
@@ -89,12 +92,15 @@ nav a {
 
 h2 {
     text-align: center;
+
     font-size: 35px;
+
     margin-bottom: 30px;
 }
 
 .intro {
     text-align: center;
+
     color: #aaa;
 
     margin-bottom: 30px;
@@ -104,6 +110,7 @@ h2 {
 
 .categorias {
     display: flex;
+
     gap: 10px;
 
     overflow-x: auto;
@@ -395,12 +402,12 @@ footer {
 }
 
 </style>
+
 </head>
+
 
 <body>
 
-
-<!-- ENCABEZADO -->
 
 <header>
 
@@ -421,8 +428,6 @@ RAITO <span>SUSHI WOK</span>
 </header>
 
 
-<!-- NAVEGACIÓN -->
-
 <nav>
 
 <a href="#menu">
@@ -439,9 +444,11 @@ Carta
 
 <main class="container" id="menu">
 
+
 <h2>
 🍣 Carta oficial
 </h2>
+
 
 <p class="intro">
 
@@ -451,11 +458,10 @@ con respeto y técnica.
 </p>
 
 
-<!-- CATEGORÍAS -->
-
 <div class="categorias">
 
-<button class="activo"
+<button
+class="activo"
 onclick="filtrar('Todos', this)">
 Todos
 </button>
@@ -488,23 +494,22 @@ Combos
 </div>
 
 
-<!-- PRODUCTOS -->
-
 <div
 class="productos"
 id="productos">
 </div>
 
 
-<!-- CARRITO -->
 
 <section
 class="carrito"
 id="pedido">
 
+
 <h2>
 🛒 Tu pedido
 </h2>
+
 
 <div id="carrito">
 
@@ -546,9 +551,8 @@ $<span id="total">0</span>
 </div>
 
 
-<!-- DATOS DEL CLIENTE -->
-
 <div class="formulario">
+
 
 <h3>
 📍 Datos de entrega
@@ -599,6 +603,7 @@ id="nota"
 placeholder="Notas del pedido (opcional)">
 </textarea>
 
+
 </div>
 
 
@@ -610,7 +615,9 @@ onclick="enviarWhatsApp()">
 
 </button>
 
+
 </section>
+
 
 </main>
 
@@ -622,12 +629,9 @@ onclick="enviarWhatsApp()">
 </footer>
 
 
+
 <script>
 
-
-/* =========================
-PRODUCTOS DE RAITO
-========================= */
 
 const productos = [
 
@@ -890,8 +894,8 @@ categoria:"Combos",
 nombre:"COMBO FAMILIAR RAITO – PARA COMPARTIR",
 descripcion:"Gyozas + Thai Spring Roll + Maki Bahía Spicy + Maki Philadelphia + Maki Caribe Raito + Maki Ebi Tempura + Maki Yuzu Ceviche + 3 bebidas.",
 precio:130900
-
 }
+
 
 ];
 
@@ -899,7 +903,7 @@ precio:130900
 let carrito = {};
 
 
-/* MOSTRAR DINERO */
+/* DINERO */
 
 function dinero(numero) {
 
@@ -908,19 +912,17 @@ return numero.toLocaleString("es-CO");
 }
 
 
-/* MOSTRAR PRODUCTOS */
+/* PRODUCTOS */
 
 function mostrarProductos(lista = productos) {
 
 const contenedor =
 document.getElementById("productos");
 
-
 contenedor.innerHTML = "";
 
 
 lista.forEach(producto => {
-
 
 contenedor.innerHTML += `
 
@@ -939,9 +941,7 @@ ${producto.descripcion}
 </p>
 
 <div class="precio">
-
 $${dinero(producto.precio)}
-
 </div>
 
 <button
@@ -1016,14 +1016,13 @@ mostrarCarrito();
 }
 
 
-/* MOSTRAR CARRITO */
+/* CARRITO */
 
 function mostrarCarrito() {
 
 
 const contenedor =
 document.getElementById("carrito");
-
 
 const ids =
 Object.keys(carrito);
@@ -1051,8 +1050,8 @@ ids.forEach(id => {
 
 
 const producto =
-productos.find(p =>
-p.id == id
+productos.find(
+p => p.id == id
 );
 
 
@@ -1117,11 +1116,12 @@ Eliminar
 
 let subtotal = 0;
 
+
 ids.forEach(id => {
 
 const producto =
-productos.find(p =>
-p.id == id
+productos.find(
+p => p.id == id
 );
 
 subtotal +=
@@ -1186,7 +1186,9 @@ p => p.categoria === categoria
 }
 
 
-/* WHATSAPP */
+/* ==========================
+WHATSAPP RAITO SUSHI WOK
+========================== */
 
 function enviarWhatsApp() {
 
@@ -1197,7 +1199,9 @@ Object.keys(carrito);
 
 if (ids.length === 0) {
 
-alert("Agrega productos al carrito.");
+alert(
+"Agrega productos al carrito."
+);
 
 return;
 
@@ -1205,23 +1209,31 @@ return;
 
 
 const nombre =
-document.getElementById("nombre")
-.value.trim();
+document
+.getElementById("nombre")
+.value
+.trim();
 
 
 const telefono =
-document.getElementById("telefono")
-.value.trim();
+document
+.getElementById("telefono")
+.value
+.trim();
 
 
 const direccion =
-document.getElementById("direccion")
-.value.trim();
+document
+.getElementById("direccion")
+.value
+.trim();
 
 
-if (!nombre ||
+if (
+!nombre ||
 !telefono ||
-!direccion) {
+!direccion
+) {
 
 alert(
 "Completa nombre, teléfono y dirección."
@@ -1233,17 +1245,20 @@ return;
 
 
 const barrio =
-document.getElementById("barrio")
+document
+.getElementById("barrio")
 .value;
 
 
 const pago =
-document.getElementById("pago")
+document
+.getElementById("pago")
 .value;
 
 
 const nota =
-document.getElementById("nota")
+document
+.getElementById("nota")
 .value;
 
 
@@ -1276,8 +1291,22 @@ lista +=
 });
 
 
+/*
+================================
+NÚMERO REAL DE RAITO SUSHI WOK
+================================
 
-const numero = "573202043997";
++57 320 204 3997
+
+IMPORTANTE:
+WhatsApp necesita el número
+sin +, espacios ni guiones.
+
+================================
+*/
+
+const numero =
+"573202043997";
 
 
 const mensaje =
@@ -1306,8 +1335,11 @@ lista +
 
 
 window.open(
+
 `https://wa.me/${numero}?text=${mensaje}`,
+
 "_blank"
+
 );
 
 }
@@ -1322,4 +1354,5 @@ mostrarCarrito();
 </script>
 
 </body>
+
 </html>
