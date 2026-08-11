@@ -949,13 +949,7 @@ lista.forEach(producto => {
 
 contenedor.innerHTML += `
 
-<article class="producto">
-${producto.imagen ? `
-<img
-    class="foto-plato"
-    src="${producto.imagen}"
-    alt="${producto.nombre}">
-` : ""}
+${producto.imagen ? '<img class="foto-plato" src="' + producto.imagen + '" alt="' + producto.nombre + '">' : ''}
 <div class="categoria">
 ${producto.categoria}
 </div>
