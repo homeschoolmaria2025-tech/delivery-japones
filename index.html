@@ -738,7 +738,8 @@ id:11,
 categoria:"Sushi",
 nombre:"Maki Ebi Mango",
 descripcion:"Langostino, queso crema, aguacate, mango fresco y salsa de maracuyá. 10 bocados.",
-precio:30900
+precio:30900,
+imagen:"maki-ebi-mango.png"
 },
 
 
@@ -774,7 +775,8 @@ id:15,
 categoria:"Sushi",
 nombre:"Raito Tempura",
 descripcion:"Pescado blanco con queso crema y ajonjolí. 10 bocados.",
-precio:31900
+precio:27900,
+imagen:"raito-tempura.png"
 },
 
 
@@ -792,7 +794,8 @@ id:17,
 categoria:"Makis",
 nombre:"Maki Bahía Spicy",
 descripcion:"Pollo crispy, queso crema, lechuga, aguacate y palmito en salsa spicy. 10 bocados.",
-precio:29900
+precio:29900,
+imagen:"maki-bahia-spicy.png"
 },
 
 
@@ -810,7 +813,8 @@ id:19,
 categoria:"Makis",
 nombre:"Costeño Raito",
 descripcion:"Langostino tempura, tajadas de maduro, suero costeño y masago. 10 bocados.",
-precio:32900
+precio:31900,
+imagen:"costeno-raito.png"
 },
 
 
@@ -819,7 +823,9 @@ id:20,
 categoria:"Makis",
 nombre:"Maki Yuzu Ceviche",
 descripcion:"Pescado blanco marinado en cítricos sobre arroz sazonado y alga nori. 10 bocados.",
-precio:32900
+  precio: 31900,
+  imagen: "maki-yuzu-ceviche.png"
+}
 },
 
 
@@ -828,7 +834,9 @@ id:21,
 categoria:"Nigiris",
 nombre:"Nigiri de Salmón (Sake)",
 descripcion:"Corte fresco sobre arroz templado. 2 unidades.",
-precio:18000
+  precio: 22900,
+  imagen: "nigiri-salmon.png"
+}
 },
 
 
@@ -891,7 +899,8 @@ id:28,
 categoria:"Combos",
 nombre:"COMBO RAITO UNIMINUTO",
 descripcion:"Maki Bahía Spicy + Maki Caribe RAITO + 1 Té Hatsu + aderezo de la casa GRATIS.",
-precio:29900
+precio:31900,
+imagen:"maki-caribe-raito.png"
 },
 
 
@@ -934,7 +943,7 @@ lista.forEach(producto => {
 contenedor.innerHTML += `
 
 <article class="producto">
-<img class="foto-plato" src="thai-spring-roll.png" alt="Thai Spring Roll">
+${producto.imagen ? '<img class="foto-plato" src="' + producto.imagen + '" alt="' + producto.nombre + '">' : ''}
 <div class="categoria">
 ${producto.categoria}
 </div>
